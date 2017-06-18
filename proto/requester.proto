@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+
+package requester;
+
+service Requester {
+    rpc Process (Request) returns (stream Response) {
+        option (google.api.http).get = "/v0/etcd/key/{key_id}";
+    }
+}
+
+message Request {
+    string key_id = 1;
+}
+
+message Response {
+    KeyValue kv = 1;
+    Value val = 2;
+}
+message KeyValue{
+    map<string,string> keyvalue = 2;
+}
+message Value{
+    string value = 1;
+}
