@@ -4,9 +4,7 @@ import "google/api/annotations.proto";
 package requester;
 
 service Requester {
-    rpc Process (Request) returns (stream Response) {
-        option (google.api.http).get = "/v0/etcd/key/{key_id}";
-    }
+    rpc Process (Request) returns (stream Response);
 }
 
 message Request {
